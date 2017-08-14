@@ -21,13 +21,13 @@ Drop out
 
 Tried different value of learning rate and Drop out rate.  
 
-Learning rate = 0.0001 with drop out = 0.5 seems work pretty well.  The number of Epochs was selected by watching the convergence of the loss.  After 50 epochs, the loss didnot go down consistenly.  I used 80 epochs. 
+Learning rate = 0.00001 with drop out = 0.5 seems work pretty well.  The number of Epochs was selected by watching the convergence of the loss.  After ~50/60 epochs, the loss didnot go down consistenly.  I used 100 epochs. 
 
 I end up with the following hyperparameter selection:
 
 Learning rate = 0.0001
 Epochs = 80
-Batch Size = 16
+Batch Size = 10
 Drop out = 0.5
 
 
