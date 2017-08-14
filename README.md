@@ -21,7 +21,7 @@ Drop out
 
 Tried different value of learning rate and Drop out rate.  
 
-Learning rate = 0.0001 with drop out = 0.5 seems work pretty well.  The number of Epochs was selected by watching the convergence of the loss.  After 
+Learning rate = 0.0001 with drop out = 0.7 seems work pretty well.  The number of Epochs was selected by watching the convergence of the loss.  After 
 ### Setup
 ##### Frameworks and Packages
 Make sure you have the following is installed:
