@@ -66,34 +66,34 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
      #                           kernel_initializer=tf.truncated_normal_initializer(stddev=0.01))
 
     layer7_fcn = tf.layers.conv2d(vgg_layer7_out, num_classes, (1,1), (1,1), 
-                                kernel_initializer=tf.truncated_normal_initializer( stddev=0.01 ))
+                                kernel_initializer=tf.truncated_normal_initializer( stddev=0.001 ))
     #Decoder
 
     #1st Upsampling
     layer7_upscale = tf.layers.conv2d_transpose(layer7_fcn, num_classes,(4,4), (2,2), padding='SAME',
-                                kernel_initializer=tf.truncated_normal_initializer(stddev=0.01) )
+                                kernel_initializer=tf.truncated_normal_initializer(stddev=0.001) )
 
     #Fully Connected  1x1 convoluation with layer 4 output
     layer4_fcn = tf.layers.conv2d(vgg_layer4_out, num_classes, (1,1), (1,1),
-                                kernel_initializer=tf.truncated_normal_initializer(stddev=0.01) )
+                                kernel_initializer=tf.truncated_normal_initializer(stddev=0.001) )
 
     #Skip connection
     layer4_skip = tf.add(layer7_upscale, layer4_fcn)
 
     #2nd upsampling
     layer4_upscale = tf.layers.conv2d_transpose(layer4_skip, num_classes, (4,4), (2,2), padding='SAME',
-                                kernel_initializer=tf.truncated_normal_initializer(stddev = 0.01))
+                                kernel_initializer=tf.truncated_normal_initializer(stddev = 0.001))
 
     #Full conneced 1x1 convolution with layer 3 output
     layer3_fcn = tf.layers.conv2d(vgg_layer3_out, num_classes, (1,1), (1,1), 
-                                kernel_initializer=tf.truncated_normal_initializer(stddev = 0.01))
+                                kernel_initializer=tf.truncated_normal_initializer(stddev = 0.001))
 
     #Skip connection
     layer3_skip = tf.add(layer4_upscale, layer3_fcn)
 
     #Output by upsampling last layer
     output = tf.layers.conv2d_transpose(layer3_skip, num_classes, (16,16), (8,8), padding='SAME',
-                                kernel_initializer=tf.truncated_normal_initializer(stddev = 0.01))
+                                kernel_initializer=tf.truncated_normal_initializer(stddev = 0.001))
 
 
     return output
@@ -162,7 +162,7 @@ def save_model(sess):
 def run():
     num_classes = 2
     epochs = 80
-    batch_size = 16
+    batch_size = 8
     image_shape = (160, 576)
     data_dir = '/media/annie.guan/DATA/Data/Kitti/KittiSeg/DATA'
     runs_dir = '/media/annie.guan/DATA/Data/Kitti/KittiSeg/RUNS'
