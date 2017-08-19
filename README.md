@@ -19,16 +19,17 @@ Epochs
 Batch Size
 Drop out 
 
-Tried different value of learning rate and Drop out rate.  
+Tried different value of learning rate, Drop out rate and kernel initializer stddev.
 
-Learning rate = 0.00001 with drop out = 0.5 seems work pretty well.  The number of Epochs was selected by watching the convergence of the loss.  After ~50/60 epochs, the loss didnot go down consistenly.  I used 100 epochs. 
+kernel initializer with 0.001 stddev with learning rate = 1e4, drop out = 0.5 and epochs = 80 seems work pretty well.   
 
-I end up with the following hyperparameter selection:
+So I end up with the following hyperparameter selection:
 
-Learning rate = 0.0001
+Learning rate = 1e4
 Epochs = 80
-Batch Size = 10
+Batch Size = 8
 Drop out = 0.5
+Kernel initializer with stddev = 0.001
 
 
 ### Setup
